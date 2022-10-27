@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Holy Cross Medical Center ::: Patients Management Systems</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Patient List
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="patients">All Patients</a></li>
+                    <li><a href="#">By ID</a></li>
+                    <li><a href="#">By Name</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Other Services</a></li>
+
+        </ul>
+    </div>
+</nav>
+<div>
+<div style="float: left"> <h2>List of all registered patients</h2></div>
+<div class="btn-group btn-group-lg" style="float: right;">
+    <button type="button" class="btn btn-primary">Add Patient</button>
+
+</div></div><br><br><br>
+<hr>
+<table border="1" class="table table-striped">
+    <tr>
+        <th class="table-striped">#</th>
+        <th>Patient Number</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Contact phone</th>
+        <th>Date of birth</th>
+        <th>Out Patient</th>
+    </tr>
+    <tr th:each="tempPat:${patients}">
+        <td th:text="${tempPat.getPatientId()}"/>
+        <td th:text="${tempPat.getPatientNo()}"/>
+        <td th:text="${tempPat.getFullname()}"/>
+        <td th:text="${tempPat.getEmailAddress()}"/>
+        <td th:text="${tempPat.getContactPhone()}"/>
+        <td th:text="${tempPat.getDateOfBirth()}"/>
+        <td th:text="${tempPat.getIsInPatient()}"/>
+
+    </tr>
+
+
+</table>
+<div class="panel panel-default" style=" position:fixed; bottom:0;width: 100%">
+
+    <div class="panel-footer" style="height:40px;"><div style="float:left;">&#9400 Soroncho. FM</div> <div style="float:right;">CS425SWE201906:::Final Exam</div></div>
+
+</div>
+</body>
+</html>

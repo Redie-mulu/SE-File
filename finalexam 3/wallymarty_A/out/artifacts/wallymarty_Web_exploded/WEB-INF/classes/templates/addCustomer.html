@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:format="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="">
+    <link rel="icon" href="favicon.ico">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/cerulean/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EmRcsPP774S9MOi4ywB+JXUWjYnBdyInMzG2XsC5siZEUpexqxOMJW358dCYEjPu" crossorigin="anonymous">
+    <!--    <link rel="stylesheet" type="text/css" th:href="@{/css/master.css}">-->
+    <title>eLibrary - a demo spring boot webapp</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a style="padding-right: 2em;" class="navbar-brand" href="/about">eLibrary : : : a basic demo webapp using Spring
+        Boot</a>
+    <!--<span style="color: #ffffff;"> &nbsp; | &nbsp;</span>-->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" style="border-left: white 1px solid; padding-left: 2em; padding-right: 2em;">
+                <a class="nav-link" href="/about">About</a>
+            </li>
+
+            <li class="nav-item" style="border-left: white 1px solid; padding-left: 2em; padding-right: 2em;">
+                <a class="nav-link" href="/customer/list"> Customer</a>
+            </li>
+
+            <li class="nav-item" style="border-left: white 1px solid; padding-left: 2em; padding-right: 2em;">
+                <a class="nav-link" href="/primeCustomerList"> Prima Custmer Customer</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <!--<input class="form-control mr-sm-2" type="text" placeholder="Search">-->
+            <!--<a style="color: #ffffff; margin-right: 0em;" class="nav-link" href="#">John Doe</a>-->
+            <!--<a href="#" class="btn btn-secondary">Sign In</a>-->
+        </form>
+    </div>
+</nav>
+
+<p>&nbsp;</p>
+
+<div class="container">
+    <h1>Recording a new customer</h1>
+
+    <form action="#" method="post" th:action="@{saveCustomer}" th:object="${customer}">
+        <fieldset>
+            <legend>New Customer registration Form</legend>
+            <div>
+                <div>
+                    <div>
+                        <input type="hidden" name="customerId" th:field="${customer.customerId}"/>
+                        <div class="form-group">
+                            <label>customer Number</label>
+                            <input id="productNumber" name="productNumber" type="text"
+                                   th:field="${customer.customerNumber}" required autofocus="autofocus">
+                        </div>
+                        <div>
+                            <label>Name</label>
+                            <input id="name" name="name" type="text" th:field="${customer.name}" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label>contctPhoneNUmber </label>
+                            <input type="tel" th:field="${customer.contctPhoneNUmber}" placeholder="XXXX-XX-XXXX"
+                                   required="required">
+                        </div>
+                    </div>
+                    <div>
+                        <label>Date of Birth </label>
+                        <input type="date" th:field="${customer.dateOfBirth}" required="required">
+                    </div>
+                    <div>
+                        <label>Coutry </label>
+                        <input type="text" th:field="${customer.coutry}" required="required">
+                    </div>
+                    <div>
+                        <button id="btnSubmit" type="submit">Add customer</button>
+                        <button id="btnReset" type="reset">Reset</button>
+                        <a href="/">Cancel</a>
+                        <a href="/search">Sarch</a>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+</div>
+
+</body>
+</html>
